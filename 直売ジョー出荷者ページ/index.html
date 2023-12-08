@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>業務用ページ</title>
+    <!-- Bootstrap v5 CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 追加のスタイル */
+        .custom-toggler .navbar-toggler-icon {
+            background-color: red; /* ハンバーガーアイコンの色を赤に変更 */
+        }
+
+        /* サイドメニュー用のスタイル */
+        .side-menu {
+            height: 100vh; /* メニューの高さを画面の高さいっぱいに */
+            position: fixed;
+            top: 0;
+            left: -250px; /* 左側にメニューを配置 */
+            z-index: 1;
+            overflow-x: hidden;
+            padding-top: 20px;
+            transition: all 0.3s ease; /* アニメーションを追加 */
+        }
+        .side-menu.show {
+            left: 0; /* メニューを表示 */
+        }
+        .side-menu a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #000;
+            display: block;
+        }
+        .side-menu a:hover {
+            background-color: #ddd;
+        }
+        .navbar-brand {
+            padding: 15px 25px;
+            font-size: 20px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Vue.jsのマウントポイント -->
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleMenu()">
+                    <span class="navbar-toggler-icon"></span> <!-- ハンバーガーアイコン -->
+                </button>
+                <a class="navbar-brand" href="#">Navbar</a>
+                <div class="side-menu collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <!-- 他のメニューアイテム -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Vue.js本体とBootstrap v5のJavaScriptを読み込む -->
+    <script src="vue.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- 自作のVueコンポーネントやカスタムスクリプトを読み込む -->
+    <script src="main.js"></script>
+
+    <script>
+        // メニューの表示・非表示を切り替えるJavaScript関数
+        function toggleMenu() {
+            const sideMenu = document.querySelector('.side-menu');
+            sideMenu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
